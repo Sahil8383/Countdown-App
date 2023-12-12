@@ -51,11 +51,6 @@ const Countdown = () => {
 
     const handleChange = (event) => {
 
-        if (event.target.value < 0){
-            setOpen(true);
-            return;
-        }
-
         const newinputMin = parseInt(event.target.value, 10);
         setinputMin(newinputMin);
         setHours(Math.floor(newinputMin / 60));
@@ -67,8 +62,8 @@ const Countdown = () => {
 
     return (
         <div className="outerBox">
-            <div className="mb-4 flex flex-col">
-                <label className="label">Enter Minutes</label>
+            <div className="inputBox">
+                <label className="label">Enter Minutes :</label>
                 <input
                     type="number"
                     value={inputMin}
@@ -76,7 +71,7 @@ const Countdown = () => {
                     className='input'
                 />
             </div>
-            <div className="flex flex-row mb-4">
+            <div className="displayBox">
                 {
                     isPlaying ? (
                         <button onClick={() => setIsPlaying(false)} className="btnPlay">
@@ -96,7 +91,7 @@ const Countdown = () => {
                         :
                         {isNaN(String(seconds).padStart(2, '0')) ? '00' : String(seconds).padStart(2, '0')}
                 </p>
-                <button onClick={handleReset} className="bg-red-500 text-white p-2 rounded-full ml-2">
+                <button onClick={handleReset} className="btnPlay">
                     <BiReset />
                 </button>
             </div>
